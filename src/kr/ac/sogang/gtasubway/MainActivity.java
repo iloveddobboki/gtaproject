@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 // Hello World! by Minho Ryang.
 // Hello MinhoObba! by Yujin Jeong.
+// yujinee
 public class MainActivity extends Activity implements ActionBar.TabListener {
 
     /**
