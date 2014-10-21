@@ -2,6 +2,8 @@ package kr.ac.sogang.gtasubway;
 
 import java.util.ArrayList;
 
+import kr.ac.sogang.gtasubway.search.Search;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
@@ -21,8 +23,10 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
             super(fm);
 
             // 탭을 추가합시다!
-            lists.add(new Tab("요섭이", new View1()));
-            lists.add(new Tab("에픽하이", new View2()));
+            lists.add(new Tab("검색", new Search()));
+            lists.add(new Tab("최근검색", new RecentSearch()));
+            lists.add(new Tab("주변역", new Nearby()));
+            lists.add(new Tab("설정", new Setting()));
             //lists.add(new Tab("View 3", new View1()));
         }
 
