@@ -3,8 +3,9 @@ package kr.ac.sogang.gtasubway.search;
 import java.util.ArrayList;
 
 import kr.ac.sogang.gtasubway.R;
-
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +14,12 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class Search extends Fragment{
 	
 	private ArrayList<SearchListData> mSearchListData;
 	
-	int clickedId=-1;
+	int startId=-1, endId=-1, clickedId=-1;
 	
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,25 +46,42 @@ public class Search extends Fragment{
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
-		
-				if(clickedId==-1){
-					clickedId=position;
-					getActivity().setTitle((mSearchListData.get(position)).mStation+"선택되었습니다");
-				}
-				else{
-					if(position==clickedId){
-						clickedId=-1;
-						getActivity().setTitle("GtaSubway");
+				clickedId=position;
+				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());//?			
+				builder.setTitle(mSearchListData.get(position).mStation);
+				builder.setItems(new CharSequence[]{"출발역","도착역","역정보 보기","역무원에게 전화걸기"}, new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						if(which==0){
+							if(startId==-1){
+								startId=clickedId;//전역....
+							}
+							else{
+								if(startId==clickedId){
+									startId=-1;
+								}
+								else{
+									startId=clickedId;
+								}
+							}
+						}
+						else if(which==1){
+							if(endId==-1){
+								endId=clickedId;//전역....
+							}
+						}
+						else if(which==2){
+							
+						}
+						else if(which==3){
+							
+						}
+						getActivity().setTitle(Integer.toString(startId) + "~" + Integer.toString(endId));
 					}
-					else{
-						getActivity().setTitle(
-								mSearchListData.get(clickedId).mStation+"에서"+
-								mSearchListData.get(position).mStation+"으로 갑니다");
-						clickedId=-1;
-
-					}
-				}
-				
+				});
+				builder.show();
 				
 			}
 		});
