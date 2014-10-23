@@ -8,5 +8,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_searched_subway">SearchedSubway</string>
+    <string name="title_activity_station_on_foot">StationOnFoot</string>
 
 </resources>
