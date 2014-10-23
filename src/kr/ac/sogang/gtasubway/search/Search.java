@@ -6,6 +6,7 @@ import kr.ac.sogang.gtasubway.R;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -81,7 +82,8 @@ public class Search extends Fragment{
 						{
 							if(endId!=-1){
 								if(startId!=endId)
-									getActivity().setTitle("액티비티 전환 " + startId+"출발 "+endId+"도착");
+									startActivity(new Intent(getActivity(), SearchedSubway.class));
+									
 								else
 									getActivity().setTitle("걸어가"); // 출발역과 도착역이 같을때
 							}
