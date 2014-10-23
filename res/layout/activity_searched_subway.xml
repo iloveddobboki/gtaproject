@@ -9,6 +9,7 @@
     tools:context="kr.ac.sogang.gtasubway.search.SearchedSubway" >
 
     <TableLayout
+        android:id="@+id/tableLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
@@ -23,22 +24,20 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-             <Space
+
+            <Space
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-            
-              <Space
+
+            <Space
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-             
 
             <Button
                 android:id="@+id/search_mode"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Button" />
-
-           
         </TableRow>
 
         <TableRow
@@ -66,21 +65,37 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="TextView" />
-
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/tableRow6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/door_station1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TextView" />
                 </TableRow>
 
-                <TextView
-                    android:id="@+id/door_station1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="TextView" />
+                <TableRow
+                    android:id="@+id/tableRow10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
 
+                    <TextView
+                        android:id="@+id/width1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="sdf" />
+
+                    <TextView
+                        android:id="@+id/height1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="wer" />
+                </TableRow>
             </TableLayout>
 
             <Button
@@ -103,7 +118,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="TextView" />
-
                 </TableRow>
 
                 <TableRow
@@ -116,10 +130,28 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="TextView" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/width2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="wer" />
+
+                    <TextView
+                        android:id="@+id/height2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                
+                        android:text="wer" />
 
                 </TableRow>
             </TableLayout>
-
         </TableRow>
 
         <TableRow
@@ -131,7 +163,7 @@
                 android:id="@+id/menuname_arrival"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="TextView" />
+                android:text="도착" />
 
             <Space
                 android:layout_width="match_parent"
@@ -142,7 +174,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="TextView" />
-
         </TableRow>
 
         <TableRow
@@ -154,14 +185,13 @@
                 android:id="@+id/menuname_departure"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="TextView" />
+                android:text="출발" />
 
             <TextView
                 android:id="@+id/departuretime"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="TextView" />
-
         </TableRow>
 
         <TableRow
@@ -176,7 +206,7 @@
                 android:text="TextView" />
 
             <TextView
-                android:id="@+id/stations"
+                android:id="@+id/numofstations"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="TextView" />
@@ -186,9 +216,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="TextView" />
-
         </TableRow>
-
     </TableLayout>
 
 </RelativeLayout>
