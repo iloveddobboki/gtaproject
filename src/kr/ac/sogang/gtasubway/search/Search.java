@@ -54,31 +54,46 @@ public class Search extends Fragment{
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						// TODO Auto-generated method stub
-						if(which==0){
-							if(startId==-1){
-								startId=clickedId;//전역....
+						/*출발역 도착역 저장*/
+						switch(which){
+						case 0 : 
+							if(startId!=clickedId)
+								startId=clickedId;
+							else
+								startId=-1;
+							break;
+						case 1 :
+							if(endId!=clickedId)
+								endId=clickedId;
+							else
+								endId=-1;
+							break;
+						case 2 :
+							getActivity().setTitle("구현예정!");
+							break;
+						case 3 :
+							getActivity().setTitle("구현예정!!");
+							break;
+						}
+						
+						/*출발역 도착역 설정에 따른 보여주기, 전환*/
+						if(startId!=-1)
+						{
+							if(endId!=-1){
+								if(startId!=endId)
+									getActivity().setTitle("액티비티 전환 " + startId+"출발 "+endId+"도착");
+								else
+									getActivity().setTitle("걸어가"); // 출발역과 도착역이 같을때
 							}
-							else{
-								if(startId==clickedId){
-									startId=-1;
-								}
-								else{
-									startId=clickedId;
-								}
-							}
+							else
+								getActivity().setTitle(startId+"출발");
+								
 						}
-						else if(which==1){
-							if(endId==-1){
-								endId=clickedId;//전역....
-							}
-						}
-						else if(which==2){
-							
-						}
-						else if(which==3){
-							
-						}
-						getActivity().setTitle(Integer.toString(startId) + "~" + Integer.toString(endId));
+						else if(endId!=-1)
+							getActivity().setTitle(endId+"도착");
+						else
+							getActivity().setTitle("GtaSubway");
+				
 					}
 				});
 				builder.show();
