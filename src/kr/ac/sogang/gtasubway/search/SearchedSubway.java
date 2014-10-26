@@ -18,16 +18,16 @@ public class SearchedSubway extends Activity {
 	//	SearchedSubwayInfo searchedSubway=new SearchedSubwayInfo(shinchon, ahyen, 1000, 10, 2);
 		TextView tvLineStation1, tvDoorStation1, tvWidth1, tvHeight1, tvLineStation2, tvDoorStation2, tvWidth2, tvHeight2, tvArrivalTime, tvDepartureTime, tvTime, tvNumOfStations, tvFare;
 		Button btDeparture, btDestination, btSearchMode;
-		
+		SearchedSubwayInfo searchedSubway;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_searched_subway);
 		
-//		Intent intent= getIntent();
-//		SearchedSubwayInfo obj = (SearchedSubwayInfo)intent.getSerializableExtra("ObjectData");
+		Intent intent= getIntent();
+		searchedSubway = (SearchedSubwayInfo)intent.getSerializableExtra("searchedInfo");
 		
-		setTitle(searchedSubway.departure.stationName+"에서"+searchedSubway.destination.stationName+"으로");
+		setTitle(searchedSubway.departure.mStation+"에서"+searchedSubway.destination.mStation+"으로");
 		/*버튼 텍스트 입력 : 역명*/
 		btDeparture=(Button)findViewById(R.id.station1);
 		btDestination=(Button)findViewById(R.id.station2);
@@ -58,7 +58,8 @@ public class SearchedSubway extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent itDeparture = new Intent(getApplicationContext(), StationOnFoot.class);
-				itDeparture.putExtra("departure", "신촌");
+			//	itDeparture.putExtra("departure", "신촌");
+				
 				startActivity(itDeparture);
 			}
 		});
@@ -78,7 +79,11 @@ public class SearchedSubway extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				searchedSubway=new SearchedSubwayInfo(shinchon, shinchon, 1500, 5, 1);
+		//
+				Intent intent= getIntent();
+				SearchedSubwayInfo searchedSubway = (SearchedSubwayInfo)intent.getSerializableExtra("searchedInfo");
+
+//				searchedSubway=new SearchedSubwayInfo(shinchon, shinchon, 1500, 5, 1);
 				setTextAll();
 				
 			}
@@ -88,14 +93,14 @@ public class SearchedSubway extends Activity {
 	}
 	
 	void setTextAll(){
-		btDeparture.setText(searchedSubway.departure.stationName);
-		btDestination.setText(searchedSubway.destination.stationName);
+		btDeparture.setText(searchedSubway.departure.mStation);
+		btDestination.setText(searchedSubway.destination.mStation);
 
-		tvLineStation1.setText(""+searchedSubway.departure.line);
+		tvLineStation1.setText(""+searchedSubway.departure.searchedLine);
 		tvDoorStation1.setText(""+searchedSubway.departure.door);
 		tvWidth1.setText(""+searchedSubway.departure.width);
 		tvHeight1.setText(""+searchedSubway.departure.height);
-		tvLineStation2.setText(""+searchedSubway.destination.line);
+		tvLineStation2.setText(""+searchedSubway.destination.searchedLine);
 		tvDoorStation2.setText(""+searchedSubway.destination.door);
 		tvWidth2.setText(""+searchedSubway.destination.width);
 		tvHeight2.setText(""+searchedSubway.destination.height);

@@ -19,19 +19,11 @@ import android.widget.ListView;
 public class Search extends Fragment{
 	
 	private ArrayList<Station> mSearchListData=new ArrayList<Station>();
-	private ArrayList<StationInfo> mSerachedStations=new ArrayList<StationInfo>();
+	private ArrayList<StationInfo> mSearchedStations=new ArrayList<StationInfo>();
 	
 	
 	int startId=-1, endId=-1, clickedId=-1;
 
-   
-
-	StationInfo shinchon = new StationInfo(mSearchListData.get(0), 2, 31, 1, 1,200,159), 
-			ihwa = new StationInfo(mSearchListData.get(1), 2, 31, 2, 2, 202, 201),
-			ahyen = new StationInfo(mSearchListData.get(2), 2, 31, 3, 3, 204, 203),
-			choongjeongro = new StationInfo(mSearchListData.get(3), 2, 31, 3, 3, 206, 205);		
-	
-	
 	
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,12 +34,12 @@ public class Search extends Fragment{
 	 		mSearchListData.add(new Station(null,"아현","2","_"));
 	 		mSearchListData.add(new Station(null,"충정로","2","_"));
 	    
-	 	mSerachedStations= new ArrayList<StationInfo>();
-	 	/*	mSearchListData.add(new StationInfo(mSearchListData.get(0), 2, 31, 1, 1, 200, 159));
+	 	mSearchedStations= new ArrayList<StationInfo>();
+	 /*		mSearchListData.add(new StationInfo(mSearchListData.get(0), 2, 31, 1, 1, 200, 159));
 	 		mSearchListData.add(new StationInfo(mSearchListData.get(1), 2, 31, 1, 1, 200, 159));
 	 		mSearchListData.add(new StationInfo(mSearchListData.get(2), 2, 31, 1, 1, 200, 159));
 	 		mSearchListData.add(new StationInfo(mSearchListData.get(3), 2, 31, 1, 1, 200, 159));
-	    	*/
+	   */ 	
 	 	
 	 		// 레이아웃은 여기에
         View rootView = inflater.inflate(R.layout.search_layout, container, false);
@@ -101,12 +93,12 @@ public class Search extends Fragment{
 							if(endId!=-1){
 								if(startId!=endId)
 								{
+									mSearchedStations.add(new StationInfo(mSearchListData.get(startId), 2, 31, 1, 1, 200, 159));
+									mSearchedStations.add(new StationInfo(mSearchListData.get(endId), 2, 31, 1, 1, 200, 159));
+							 	
 									Intent search_subway=new Intent(getActivity(), SearchedSubway.class);
-									/*출발역과 도착역 */
-									mSearchListData.add(new StationInfo(mSearchListData.get(startId), 2, 31, 1, 1, 200, 159));
-									mSearchListData.add(new StationInfo(mSearchListData.get(endId), 2, 31, 1, 1, 200, 159));
-							 		
-									search_subway.putExtra("searchedInfo",new SearchedSubwayInfo(mSerachedStations.get(0),mSerachedStations.get(1),  1000, 10, 2));
+									/*출발역과 도착역 */	
+									search_subway.putExtra("searchedInfo",new SearchedSubwayInfo(mSearchedStations.get(0),mSearchedStations.get(1),  1000, 10, 2));
 								
 									startActivity(search_subway);
 								}
