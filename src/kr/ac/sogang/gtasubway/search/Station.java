@@ -17,5 +17,10 @@ public class Station implements Serializable{
 		this.mLine1=mLine1;
 		this.mLine2=mLine2;
 	}
-	
+	public Station(Station station){
+		this.mIcon=station.mIcon;
+		this.mStation=station.mStation;
+		this.mLine1=station.mLine1;
+		this.mLine2=station.mLine2;
+	}
 }

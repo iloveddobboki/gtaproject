@@ -13,9 +13,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class SearchedSubway extends Activity {
-		StationInfo shinchon = new StationInfo("신촌", 2, 31, 1, 1, 200/*어쩔*/, 200), ahyen = new StationInfo("아현", 2, 31, 2, 2, 210, 210);
+	//	StationInfo shinchon = new StationInfo(, 2, 31, 1, 1, 200/*어쩔*/, 200), ahyen = new StationInfo("아현", 2, 31, 2, 2, 210, 210);
 		
-		SearchedSubwayInfo searchedSubway=new SearchedSubwayInfo(shinchon, ahyen, 1000, 10, 2);
+	//	SearchedSubwayInfo searchedSubway=new SearchedSubwayInfo(shinchon, ahyen, 1000, 10, 2);
 		TextView tvLineStation1, tvDoorStation1, tvWidth1, tvHeight1, tvLineStation2, tvDoorStation2, tvWidth2, tvHeight2, tvArrivalTime, tvDepartureTime, tvTime, tvNumOfStations, tvFare;
 		Button btDeparture, btDestination, btSearchMode;
 		

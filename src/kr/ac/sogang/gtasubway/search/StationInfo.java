@@ -4,15 +4,17 @@ import java.io.Serializable;
 
 import android.text.format.Time;
 
-public class StationInfo  implements Serializable{
-	String stationName=new String("");
-	int line=0, door=0, width=0, height=0;
+public class StationInfo extends Station implements Serializable{
+	//String stationName=new String("");
+	
+	int searchedLine=0, door=0, width=0, height=0;
 	int departure, arrival;
 	
-	public StationInfo(String stationName, int line, int door,int width, int height, int departure, int arrival){
+	public StationInfo(Station station, int line, int door,int width, int height, int departure, int arrival){
 		
-		this.stationName=stationName;//될껄?
-		this.line=line;
+	//	this.stationName=stationName;//될껄?
+		super(station);
+		this.searchedLine=line;
 		this.door=door;
 		this.width=width;
 		this.height=height;
