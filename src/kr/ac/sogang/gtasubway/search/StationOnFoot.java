@@ -19,6 +19,7 @@ public class StationOnFoot extends Activity {
 		WebView webView1 = (WebView)findViewById(R.id.webView1);
 		webView1.loadUrl("file:///android_asset/file.jpg");
 		webView1.getSettings().setBuiltInZoomControls(true);
+		String departure = getIntent().getStringExtra("departure");
 	}
 
 	@Override

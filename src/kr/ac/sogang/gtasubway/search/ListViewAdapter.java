@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 public class ListViewAdapter extends BaseAdapter{
 	LayoutInflater inflater;
-	ArrayList<SearchListData> mSearchListData;
-	public ListViewAdapter(LayoutInflater inflater, ArrayList<SearchListData> mSearchListData){
+	ArrayList<Station> mSearchListData;
+	public ListViewAdapter(LayoutInflater inflater, ArrayList<Station> mSearchListData){
 		super();
 		this.inflater=inflater;
 		this.mSearchListData=mSearchListData;
@@ -44,7 +44,7 @@ public class ListViewAdapter extends BaseAdapter{
 		TextView tv_line1=(TextView) converView.findViewById(R.id.mLine1);
 		TextView tv_line2=(TextView) converView.findViewById(R.id.mLine2);
 					
-		SearchListData mData = mSearchListData.get(position);
+		Station mData = mSearchListData.get(position);
 		
 		tv_station.setText(mData.mStation);
 		tv_line1.setText(mData.mLine1);

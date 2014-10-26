@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class SearchedSubway extends Activity {
-		StationInfo shinchon = new StationInfo("신촌", 2, 31, 1, 1, new Time()/*어쩔*/, new Time()), ahyen = new StationInfo("아현", 2, 31, 2, 2, new Time(), new Time());
+		StationInfo shinchon = new StationInfo("신촌", 2, 31, 1, 1, 200/*어쩔*/, 200), ahyen = new StationInfo("아현", 2, 31, 2, 2, 210, 210);
 		
 		SearchedSubwayInfo searchedSubway=new SearchedSubwayInfo(shinchon, ahyen, 1000, 10, 2);
 		TextView tvLineStation1, tvDoorStation1, tvWidth1, tvHeight1, tvLineStation2, tvDoorStation2, tvWidth2, tvHeight2, tvArrivalTime, tvDepartureTime, tvTime, tvNumOfStations, tvFare;
@@ -24,7 +24,8 @@ public class SearchedSubway extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_searched_subway);
 		
-		
+//		Intent intent= getIntent();
+//		SearchedSubwayInfo obj = (SearchedSubwayInfo)intent.getSerializableExtra("ObjectData");
 		
 		setTitle(searchedSubway.departure.stationName+"에서"+searchedSubway.destination.stationName+"으로");
 		/*버튼 텍스트 입력 : 역명*/
@@ -33,7 +34,7 @@ public class SearchedSubway extends Activity {
 		btSearchMode = (Button)findViewById(R.id.search_mode);
 		
 		
-		/*텍스트뷰 텍스트 입력 : 호선, 승강장번호,단차, 격차,도착시간, 출발시간, 소요시간, 정차역수, 요금*/
+		/*텍스트뷰 텍스트 입력 : 호선, 승강장번호,단차, 격차, 도착시간, 출발시간, 소요시간, 정차역수, 요금*/
 		
 		tvLineStation1 = (TextView)findViewById(R.id.line_station1);
 		tvDoorStation1 = (TextView)findViewById(R.id.door_station1);
@@ -57,6 +58,7 @@ public class SearchedSubway extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent itDeparture = new Intent(getApplicationContext(), StationOnFoot.class);
+				itDeparture.putExtra("departure", "신촌");
 				startActivity(itDeparture);
 			}
 		});

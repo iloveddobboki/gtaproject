@@ -1,8 +1,8 @@
 package kr.ac.sogang.gtasubway.search;
 
-import android.text.format.Time;
+import java.io.Serializable;
 
-public class SearchedSubwayInfo {
+public class SearchedSubwayInfo implements Serializable{
 	StationInfo departure, destination;
 	//환승역 있으면?  -- int stations 만큼 동적으로 할당 생싕즤
 	int fare, time;//걸리는 시간
