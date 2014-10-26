@@ -6,7 +6,7 @@ import android.text.format.Time;
 
 public class StationInfo extends Station implements Serializable{
 	//String stationName=new String("");
-	
+	String searchedMap;
 	int searchedLine=0, door=0, width=0, height=0;
 	int departure, arrival;
 	

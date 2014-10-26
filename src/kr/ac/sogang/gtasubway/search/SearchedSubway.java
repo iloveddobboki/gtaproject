@@ -58,7 +58,7 @@ public class SearchedSubway extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent itDeparture = new Intent(getApplicationContext(), StationOnFoot.class);
-			//	itDeparture.putExtra("departure", "신촌");
+				itDeparture.putExtra("stationInfo", searchedSubway.departure);
 				
 				startActivity(itDeparture);
 			}
@@ -70,6 +70,8 @@ public class SearchedSubway extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent itDestinatione = new Intent(getApplicationContext(), StationOnFoot.class);
+				itDestinatione.putExtra("stationInfo", searchedSubway.destination);
+				
 				startActivity(itDestinatione);
 			}
 		});

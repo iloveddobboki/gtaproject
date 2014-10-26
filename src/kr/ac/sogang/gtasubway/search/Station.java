@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 public class Station implements Serializable{
 
 	public String mIcon;
+	public String map;
 	public String mStation;
 	public String mLine1;
 	public String mLine2;
