@@ -18,10 +18,19 @@ public class StationOnFoot extends Activity {
 		
 		Intent intent=getIntent();
 		stationInfo = (StationInfo)intent.getSerializableExtra("stationInfo");
+		
+		
 		WebView webView1 = (WebView)findViewById(R.id.webView1);
-		webView1.loadUrl("file:///android_asset/test_shinchon.JPG");
+		if(stationInfo.searchedMap==null)
+			if(stationInfo.map==null)
+				webView1.loadUrl("file:///android_asset/noimage.JPG");
+			else
+				webView1.loadUrl("file:///android_asset/"+stationInfo.map);
+		else
+			webView1.loadUrl("file:///android_asset/"+stationInfo.searchedMap);
+		
 		webView1.getSettings().setBuiltInZoomControls(true);
-		String departure = getIntent().getStringExtra("departure");
+	//	String departure = getIntent().getStringExtra("departure");
 	}
 
 	@Override

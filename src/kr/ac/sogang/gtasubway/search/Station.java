@@ -13,14 +13,16 @@ public class Station implements Serializable{
 	public String mLine1;
 	public String mLine2;
 	
-	public Station(String mIcon, String mStation, String mLine1, String mLine2){
+	public Station(String mIcon,String map, String mStation, String mLine1, String mLine2){
 		this.mIcon=mIcon;
+		this.map=map;
 		this.mStation=mStation;
 		this.mLine1=mLine1;
 		this.mLine2=mLine2;
 	}
 	public Station(Station station){
 		this.mIcon=station.mIcon;
+		this.map=station.map;
 		this.mStation=station.mStation;
 		this.mLine1=station.mLine1;
 		this.mLine2=station.mLine2;

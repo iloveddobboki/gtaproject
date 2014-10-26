@@ -28,14 +28,16 @@ public class Search extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
+ 
     	mSearchListData= new ArrayList<Station>();
-	 		mSearchListData.add(new Station(null,"신촌","2","_"));
-	 		mSearchListData.add(new Station(null,"이대","2","_"));
-	 		mSearchListData.add(new Station(null,"아현","2","_"));
-	 		mSearchListData.add(new Station(null,"충정로","2","_"));
+	 		mSearchListData.add(new Station(null,"test_shinchon.JPG","신촌","2","_"));
+	 		mSearchListData.add(new Station(null,null,"이대","2","_"));
+	 		mSearchListData.add(new Station(null,"test_ahyen.JPG","아현","2","_"));
+	 		mSearchListData.add(new Station(null,"test_choongjeongro.JPG","충정로","2","_"));
 	    
 	 	mSearchedStations= new ArrayList<StationInfo>();
-	 /*		mSearchListData.add(new StationInfo(mSearchListData.get(0), 2, 31, 1, 1, 200, 159));
+	 /*		mSstartId=endId=clickedId=-1;
+    	earchListData.add(new StationInfo(mSearchListData.get(0), 2, 31, 1, 1, 200, 159));
 	 		mSearchListData.add(new StationInfo(mSearchListData.get(1), 2, 31, 1, 1, 200, 159));
 	 		mSearchListData.add(new StationInfo(mSearchListData.get(2), 2, 31, 1, 1, 200, 159));
 	 		mSearchListData.add(new StationInfo(mSearchListData.get(3), 2, 31, 1, 1, 200, 159));
@@ -93,15 +95,22 @@ public class Search extends Fragment{
 							if(endId!=-1){
 								if(startId!=endId)
 								{
-									mSearchedStations.add(new StationInfo(mSearchListData.get(startId), 2, 31, 1, 1, 200, 159));
-									mSearchedStations.add(new StationInfo(mSearchListData.get(endId), 2, 31, 1, 1, 200, 159));
-							 	
+							    	mSearchedStations.removeAll(mSearchedStations);
+									mSearchedStations.add(new StationInfo(mSearchListData.get(startId),null, 2, 31, 1, 1, 200, 159));
+									mSearchedStations.add(new StationInfo(mSearchListData.get(endId),null, 2, 31, 1, 1, 200, 159));
+									startId=endId=clickedId=-1;
+									getActivity().setTitle("GtaSubway");
+							//   
+							    
 									Intent search_subway=new Intent(getActivity(), SearchedSubway.class);
 									/*출발역과 도착역 */	
 									search_subway.putExtra("searchedInfo",new SearchedSubwayInfo(mSearchedStations.get(0),mSearchedStations.get(1),  1000, 10, 2));
 								
 									startActivity(search_subway);
 								}
+								
+								
+								
 									
 								else
 									getActivity().setTitle("걸어가"); // 출발역과 도착역이 같을때
