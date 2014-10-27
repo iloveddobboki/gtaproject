@@ -7,12 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ListViewAdapter extends BaseAdapter{
+public class ListViewAdapter extends BaseAdapter implements Filterable{
 	LayoutInflater inflater;
 	ArrayList<Station> mSearchListData;
+	
+	
+	
 	public ListViewAdapter(LayoutInflater inflater, ArrayList<Station> mSearchListData){
 		super();
 		this.inflater=inflater;
@@ -51,6 +56,11 @@ public class ListViewAdapter extends BaseAdapter{
 		tv_line2.setText(mData.mLine2);
 		
 		return converView;
+	}
+	@Override
+	public Filter getFilter() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

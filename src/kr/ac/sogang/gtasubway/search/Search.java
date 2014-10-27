@@ -15,8 +15,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
 
-public class Search extends Fragment{
+public class Search extends Fragment implements OnQueryTextListener{
 	
 	private ArrayList<Station> mSearchListData=new ArrayList<Station>();
 	private ArrayList<StationInfo> mSearchedStations=new ArrayList<StationInfo>();
@@ -24,6 +26,9 @@ public class Search extends Fragment{
 	
 	int startId=-1, endId=-1, clickedId=-1;
 
+	ListView mListView;
+	SearchView searchView;
+	ListAdapter mAdapter;
 	
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,24 +41,20 @@ public class Search extends Fragment{
 	 		mSearchListData.add(new Station(null,"test_choongjeongro.JPG","충정로","2","_"));
 	    
 	 	mSearchedStations= new ArrayList<StationInfo>();
-	 /*		mSstartId=endId=clickedId=-1;
-    	earchListData.add(new StationInfo(mSearchListData.get(0), 2, 31, 1, 1, 200, 159));
-	 		mSearchListData.add(new StationInfo(mSearchListData.get(1), 2, 31, 1, 1, 200, 159));
-	 		mSearchListData.add(new StationInfo(mSearchListData.get(2), 2, 31, 1, 1, 200, 159));
-	 		mSearchListData.add(new StationInfo(mSearchListData.get(3), 2, 31, 1, 1, 200, 159));
-	   */ 	
 	 	
 	 		// 레이아웃은 여기에
         View rootView = inflater.inflate(R.layout.search_layout, container, false);
         
         // FindViewById나 이런 하고싶은걸 다 여기에 넣으면 될 것 같아용!
     
-		ListView mListView;
+		
 		
         mListView = (ListView)rootView.findViewById(R.id.searchlistView);
-        ListAdapter mAdapter = new ListViewAdapter(inflater, mSearchListData);
+        mAdapter = new ListViewAdapter(inflater, mSearchListData);
         mListView.setAdapter(mAdapter);
         
+        searchView=(SearchView)rootView.findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(this);
         mListView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -134,6 +135,22 @@ public class Search extends Fragment{
         
         return rootView;
     }
+
+
+	@Override
+	public boolean onQueryTextChange(String newText) {
+		// TODO Auto-generated method stub
+	//	mAdapter.getFilter().filter(newText);//?
+	//	mAdapter.notifyDataSetChanged(); //Update my view
+		return false;
+	}
+
+
+	@Override
+	public boolean onQueryTextSubmit(String arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
     
 	
 	
