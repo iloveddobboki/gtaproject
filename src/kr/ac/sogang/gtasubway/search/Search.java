@@ -63,9 +63,10 @@ public class Search extends Fragment implements OnQueryTextListener{
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
-				clickedId=position;
+				clickedId=mAdapter.mSearchListData.get(position).stationId;//언제 나 mseachlistdata[0]는 신촌..
+				
 				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());//?			
-				builder.setTitle(mSearchListData.get(position).mStation);
+				builder.setTitle(mAdapter.mSearchListData.get(position).mStation);
 				builder.setItems(new CharSequence[]{"출발역","도착역","역정보 보기","역무원에게 전화걸기"}, new DialogInterface.OnClickListener() {
 					
 					@Override
@@ -73,13 +74,13 @@ public class Search extends Fragment implements OnQueryTextListener{
 						// TODO Auto-generated method stub
 						/*출발역 도착역 저장*/
 						switch(which){
-						case 0 : 
-							if(startId!=clickedId)
+						case 0 : /*출발역 버튼 클릭*/
+							if(startId!=clickedId)//출발역이 지정된 바 없거나, 다른 역이 출발역으로 지정되어 있었을 경우
 								startId=clickedId;
-							else
+							else//이미 해당역이 출발열으로 지정되어있었을 경우
 								startId=-1;
 							break;
-						case 1 :
+						case 1 :/*도착역 버튼클릭*/
 							if(endId!=clickedId)
 								endId=clickedId;
 							else
