@@ -15,33 +15,33 @@ import android.widget.TextView;
 public class ListViewAdapter extends BaseAdapter implements Filterable{
 	LayoutInflater inflater;
 	ArrayList<Station> mSearchListData;
-	
+	ArrayList<Station> originalListData;
 	//this is a simple class that filtering the ArrayList of strings used in adapter
 
-	/*public class filter_here extends Filter{
+	public class filter_here extends Filter{
 		
 		
 	        @Override
 	        protected FilterResults performFiltering(CharSequence constraint) {
 	            // TODO Auto-generated method stub
 
-	        	String Original_Names = new String("sdf");
+	        	
 	            FilterResults Result = new FilterResults();
 	            // if constraint is empty return the original names
 	            if(constraint.length() == 0 ){
-	                Result.values = Original_Names;
-	                Result.count = Original_Names.size();
+	                Result.values = originalListData;
+	                Result.count = originalListData.size();
 	                return Result;
 	            }
 
-	            ArrayList<String> Filtered_Names = new ArrayList<String>();
+	            ArrayList<Station> Filtered_Names = new ArrayList<Station>();
 	            String filterString = constraint.toString().toLowerCase();
 	            String filterableString;
 
-	            for(int i = 0; i<Original_Names.length(); i++){
-	                filterableString = Original_Names.get(i);
+	            for(int i = 0; i<originalListData.size(); i++){
+	                filterableString = originalListData.get(i).mStation;
 	                if(filterableString.toLowerCase().contains(filterString)){
-	                    Filtered_Names.add(filterableString);
+	                    Filtered_Names.add(originalListData.get(i));
 	                }
 	            }
 	            Result.values = Filtered_Names;
@@ -53,17 +53,17 @@ public class ListViewAdapter extends BaseAdapter implements Filterable{
 	        @Override
 	        protected void publishResults(CharSequence constraint,FilterResults results) {
 	            // TODO Auto-generated method stub
-	            Names = (ArrayList<String>) results.values;
+	        	 mSearchListData = (ArrayList<Station>) results.values;
 	            notifyDataSetChanged();
 	        }
 
 	    }
-	*/
+	
 	
 	public ListViewAdapter(LayoutInflater inflater, ArrayList<Station> mSearchListData){
 		super();
 		this.inflater=inflater;
-		this.mSearchListData=mSearchListData;
+		this.originalListData=this.mSearchListData=mSearchListData;
 	}
 	@Override
 	public int getCount() {
@@ -102,7 +102,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable{
 	@Override
 	public Filter getFilter() {
 		// TODO Auto-generated method stub
-		return null;
+		return new filter_here();
 		
 		//return filter;
 	}

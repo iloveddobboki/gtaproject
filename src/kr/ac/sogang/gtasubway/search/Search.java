@@ -21,6 +21,7 @@ import android.widget.SearchView.OnQueryTextListener;
 public class Search extends Fragment implements OnQueryTextListener{
 	
 	private ArrayList<Station> mSearchListData=new ArrayList<Station>();
+	private ArrayList<Station> originalSearchListData=new ArrayList<Station>();
 	private ArrayList<StationInfo> mSearchedStations=new ArrayList<StationInfo>();
 	
 	
@@ -28,7 +29,7 @@ public class Search extends Fragment implements OnQueryTextListener{
 
 	ListView mListView;
 	SearchView searchView;
-	ListAdapter mAdapter;
+	ListViewAdapter mAdapter;
 	
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,7 +40,9 @@ public class Search extends Fragment implements OnQueryTextListener{
 	 		mSearchListData.add(new Station(null,null,"이대","2","_"));
 	 		mSearchListData.add(new Station(null,"test_ahyen.JPG","아현","2","_"));
 	 		mSearchListData.add(new Station(null,"test_choongjeongro.JPG","충정로","2","_"));
-	    
+	 		
+	 	
+	 	
 	 	mSearchedStations= new ArrayList<StationInfo>();
 	 	
 	 		// 레이아웃은 여기에
