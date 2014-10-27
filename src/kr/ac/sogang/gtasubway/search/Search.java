@@ -140,8 +140,8 @@ public class Search extends Fragment implements OnQueryTextListener{
 	@Override
 	public boolean onQueryTextChange(String newText) {
 		// TODO Auto-generated method stub
-	//	mAdapter.getFilter().filter(newText);//?
-	//	mAdapter.notifyDataSetChanged(); //Update my view
+		mAdapter.getFilter().filter(newText);//?
+		mAdapter.notifyDataSetChanged(); //Update my view
 		return false;
 	}
 
