@@ -36,10 +36,10 @@ public class Search extends Fragment implements OnQueryTextListener{
             Bundle savedInstanceState) {
  
     	mSearchListData= new ArrayList<Station>();
-	 		mSearchListData.add(new Station(null,"test_shinchon.JPG","신촌","2","_",0));
-	 		mSearchListData.add(new Station(null,null,"이대","2","_",1));
-	 		mSearchListData.add(new Station(null,"test_ahyen.JPG","아현","2","_",2));
-	 		mSearchListData.add(new Station(null,"test_choongjeongro.JPG","충정로","2","_",3));
+	 		mSearchListData.add(new Station(null,"test_shinchon.JPG","신촌","2","_",0,"010-9021-6377"));
+	 		mSearchListData.add(new Station(null,null,"이대","2","_",1,"010-9021-6377"));
+	 		mSearchListData.add(new Station(null,"test_ahyen.JPG","아현","2","_",2,"010-9021-6377"));
+	 		mSearchListData.add(new Station(null,"test_choongjeongro.JPG","충정로","2","_",3,"010-9021-6377"));
 	 		
 	 	
 	 	
