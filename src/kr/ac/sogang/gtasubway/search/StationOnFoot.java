@@ -3,10 +3,14 @@ package kr.ac.sogang.gtasubway.search;
 import kr.ac.sogang.gtasubway.R;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.webkit.WebView;
+import android.widget.Button;
 
 public class StationOnFoot extends Activity {
 
@@ -20,6 +24,8 @@ public class StationOnFoot extends Activity {
 		stationInfo = (StationInfo)intent.getSerializableExtra("stationInfo");
 		
 		
+	    
+	
 		WebView webView1 = (WebView)findViewById(R.id.webView1);
 		if(stationInfo.searchedMap==null)
 			if(stationInfo.map==null)
@@ -30,6 +36,19 @@ public class StationOnFoot extends Activity {
 			webView1.loadUrl("file:///android_asset/"+stationInfo.searchedMap);
 		
 		webView1.getSettings().setBuiltInZoomControls(true);
+		
+		Button btPhone=(Button) findViewById(R.id.phone);
+		btPhone.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				  Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:010-9650-6377"));
+				    startActivity(intent);
+			}
+		});
+
+		
 	//	String departure = getIntent().getStringExtra("departure");
 	}
 

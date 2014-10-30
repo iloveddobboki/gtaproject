@@ -23,13 +23,13 @@ public class Station implements Serializable{
 		this.mLine1=mLine1;
 		this.mLine2=mLine2;
 		this.stationId=stationId;
-		this.phoneNum.add(phoneNum1);
+		this.phoneNum.add("tel:"+phoneNum1);
 	}
 	
 	public Station(String mIcon,String map, String mStation, String mLine1, String mLine2, int stationId, String phoneNum1,String phoneNum2){
 	
 		this( mIcon, map, mStation, mLine1, mLine2, stationId, phoneNum1);
-		this.phoneNum.add(phoneNum2);
+		this.phoneNum.add("tel:"+phoneNum2);
 		
 		
 	}
@@ -37,7 +37,7 @@ public class Station implements Serializable{
 	public Station(String mIcon,String map, String mStation, String mLine1, String mLine2, int stationId,String phoneNum1, String phoneNum2, String phoneNum3){
 	
 		this( mIcon, map, mStation, mLine1, mLine2, stationId, phoneNum1,phoneNum2);
-		this.phoneNum.add(phoneNum3);
+		this.phoneNum.add("tel:"+phoneNum3);
 	}
 	
 	public Station(Station station){
