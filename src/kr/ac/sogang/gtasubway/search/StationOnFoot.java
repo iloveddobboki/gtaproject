@@ -49,7 +49,7 @@ public class StationOnFoot extends Activity {
 				   // startActivity(intent);
 				int numOfLines = stationInfo.phoneNum.size();
 				if(numOfLines<2)
-					startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+stationInfo.phoneNum.get(0))));
+					startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(stationInfo.phoneNum.get(0))));
 				
 				else{
 					CharSequence[] lines = new CharSequence[numOfLines];
@@ -63,7 +63,7 @@ public class StationOnFoot extends Activity {
 					builder.setItems(lines, new DialogInterface.OnClickListener(){
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
-							startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+stationInfo.phoneNum.get(which))));
+							startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(stationInfo.phoneNum.get(which))));
 						}
 					});
 					builder.show();
