@@ -47,5 +47,6 @@ public class Station implements Serializable{
 		this.mLine1=station.mLine1;
 		this.mLine2=station.mLine2;
 		this.stationId=station.stationId;
+		this.phoneNum=station.phoneNum;
 	}
 }

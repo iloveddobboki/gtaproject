@@ -2,6 +2,8 @@ package kr.ac.sogang.gtasubway.search;
 
 import kr.ac.sogang.gtasubway.R;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -43,8 +45,61 @@ public class StationOnFoot extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				  Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:010-9650-6377"));
-				    startActivity(intent);
+				  //Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:010-9650-6377"));
+				   // startActivity(intent);
+				int numOfLines = stationInfo.phoneNum.size();
+				if(numOfLines<2)
+					startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+stationInfo.phoneNum.get(0))));
+				
+				else{
+					CharSequence[] lines = new CharSequence[numOfLines];
+					
+					for(int i=0;i<numOfLines;i++)
+						lines[i]=stationInfo.phoneNum.get(i);
+						
+					
+					AlertDialog.Builder builder = new AlertDialog.Builder(StationOnFoot.this);//?			getactivity???
+					builder.setTitle("역무원에게 전화걸기");
+					builder.setItems(lines, new DialogInterface.OnClickListener(){
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+stationInfo.phoneNum.get(which))));
+						}
+					});
+					builder.show();
+				}
+				
+			/*	lines=
+				AlertDialog.Builder builder = new AlertDialog.Builder(get);//?			
+				builder.setTitle("역무원에게 전화걸기");
+				builder.setItems(new CharSequence[]{"출발역","도착역","역정보 보기","역무원에게 전화걸기"}, new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						/*출발역 도착역 저장*/
+		/*				switch(which){
+						case 0 : /*출발역 버튼 클릭*/
+		/*					if(startId!=clickedId)//출발역이 지정된 바 없거나, 다른 역이 출발역으로 지정되어 있었을 경우
+								startId=clickedId;
+							else//이미 해당역이 출발열으로 지정되어있었을 경우
+								startId=-1;
+							break;
+						case 1 :/*도착역 버튼클릭*/
+		/*					if(endId!=clickedId)
+								endId=clickedId;
+							else
+								endId=-1;
+							break;
+						case 2 :
+							getActivity().setTitle("구현예정!");
+							break;
+						case 3 :
+							getActivity().setTitle("구현예정!!");
+							break;
+						}
+						*/
+						
 			}
 		});
 
