@@ -1,5 +1,3 @@
-package yangsu;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -18,10 +16,10 @@ public class Station_information {
 	public Station_information(){
 		
 	}
-	public Station_information(String name,  int linenum) throws IOException{//String stationNameup,String stationNamedown, int up, int down)  throws IOException{
+	public Station_information(int station_num,  int linenum) throws IOException{//String stationNameup,String stationNamedown, int up, int down)  throws IOException{
 		
 		
-		File fp =  new File("stationinfo\\"+name+"info"+linenum+".txt");
+		File fp =  new File("stationinfo\\"+station_num+"info"+linenum+".txt");
 		BufferedReader station_in_linenum = new BufferedReader(new FileReader(fp));
 		this.name = station_in_linenum.readLine();
 		station_code = station_in_linenum.readLine();
@@ -35,7 +33,7 @@ public class Station_information {
 		int tn ,desh ,desm ,deph ,depm;
 	
 		
-		fp =  new File("stationinfo\\"+this.name+linenum+"up.txt");
+		fp =  new File("stationinfo\\"+station_num+linenum+"up.txt");
 		BufferedReader time_info = new BufferedReader(new FileReader(fp));
 		String time, trainNum;
 		int f;
@@ -65,7 +63,7 @@ public class Station_information {
 		time_info.close();	
 		
 		
-		fp =  new File("stationinfo\\"+this.name+linenum+"down.txt");
+		fp =  new File("stationinfo\\"+station_num+linenum+"down.txt");
 		time_info = new BufferedReader(new FileReader(fp));
 
 		trains_down = Integer.parseInt(time_info.readLine());
@@ -90,7 +88,7 @@ public class Station_information {
 		time_info.close();	
 		
 		
-		fp =  new File("stationinfo\\"+this.name+linenum+"up_red.txt");
+		fp =  new File("stationinfo\\"+station_num+linenum+"up_red.txt");
 		time_info = new BufferedReader(new FileReader(fp));
 
 		trains_up_red = Integer.parseInt(time_info.readLine());
@@ -115,7 +113,7 @@ public class Station_information {
 		
 		time_info.close();	
 		
-		fp =  new File("stationinfo\\"+this.name+linenum+"down_red.txt");
+		fp =  new File("stationinfo\\"+station_num+linenum+"down_red.txt");
 		time_info = new BufferedReader(new FileReader(fp));
 
 		trains_down_red = Integer.parseInt(time_info.readLine());
@@ -140,7 +138,7 @@ public class Station_information {
 		time_info.close();	
 		
 		
-		fp =  new File("stationinfo\\"+this.name+linenum+"up_w.txt");
+		fp =  new File("stationinfo\\"+station_num+linenum+"up_w.txt");
 		time_info = new BufferedReader(new FileReader(fp));
 
 		trains_up_w = Integer.parseInt(time_info.readLine());
@@ -166,7 +164,7 @@ public class Station_information {
 		time_info.close();	
 
 		
-		fp =  new File("stationinfo\\"+this.name+linenum+"down_w.txt");
+		fp =  new File("stationinfo\\"+station_num+linenum+"down_w.txt");
 		time_info = new BufferedReader(new FileReader(fp));
 
 		trains_down_w = Integer.parseInt(time_info.readLine());

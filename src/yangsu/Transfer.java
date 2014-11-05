@@ -1,204 +1,200 @@
-package yangsu;
 
 public class Transfer {
 
 	
-	public TrainNumber_and_Time FindStartTrain(Station station, int h, int m, int linenum, int flag){
+	public Station_information FindStartinfo(Station start, Station end){
 		
-		int i = 0, find = 0;
+		int linenum = 0;
 		
-		while(station.info_by_line[i] != null){
-			if(station.info_by_line[i].lineNumber == linenum){
-				find = 1;
-				break;
-			}
-			i++;
-		}
-		if(find == 0) return null;
-		
-		
-		if(flag == 1){
-			for(int j = 0; j<station.info_by_line[i].trains_up; j++){
-				
-				if(h == station.info_by_line[i].TTA_up[j].deph){//����� �Է½ð� == ��ū�ð�
-					if(m <= station.info_by_line[i].TTA_up[j].depm){
-						return station.info_by_line[i].TTA_up[j];
-					}
-				}
-				else if(h <station.info_by_line[i].TTA_up[j].deph){
-					return station.info_by_line[i].TTA_up[j];
-				}//��ߺ� ã��
-			}	
-		}
-		else{
-			for(int j = 0; j<station.info_by_line[i].trains_down; j++){
-				
-				if(h == station.info_by_line[i].TTA_down[j].deph){//����� �Է½ð� == ��ū�ð�
-					if(m <= station.info_by_line[i].TTA_down[j].depm){
-						return station.info_by_line[i].TTA_down[j];
-					}
-				}
-				else if(h <station.info_by_line[i].TTA_down[j].deph){
-					return station.info_by_line[i].TTA_down[j];
-				}//��ߺ� ã��
-			}	
-		}
-		
-		return null;
-	}
-	
-	public  TrainNumber_and_Time FindEndTime(TrainNumber_and_Time train, Station end, int num, int flag){
-	
-		String trainNumber = new String(train.TrainNumber);
-		int i = 0 ,find = 0;
-		
-		while(end.info_by_line[i] != null){
-			if(end.info_by_line[i].lineNumber == num){
-				find = 1;
-				break;
-			}
-			i++;
-		}
-		if(find == 0) return null;
-		
-		
-		if(flag == 1){
-			for(int j = 0; j<end.info_by_line[i].trains_up; j++){
-			
-				if(train.deph <= end.info_by_line[i].TTA_up[j].desh){//�ð�
-			
-					for( i = 0; i<end.info_by_line[i].trains_up; i++){
-						if(train.TrainNumber.equals(end.info_by_line[i].TTA_up[i].TrainNumber))
-							return end.info_by_line[i].TTA_up[i];
-					}	
-				}
-			}
-		}
-		else{
-			for(int j = 0; j<end.info_by_line[i].trains_down; j++){
-			
-				if(train.deph <= end.info_by_line[i].TTA_down[j].desh){//�ð�
-			
-					for( i = 0; i<end.info_by_line[i].trains_down; i++){
-						if(train.TrainNumber.equals(end.info_by_line[i].TTA_down[i].TrainNumber))
-							return end.info_by_line[i].TTA_down[i];
-					}	
-				}
-			}
-		}
-		return null;
-	}
-
-	public int No_transfer_oneLine(Station start, Station end, int linenum, int h, int m){
-		
-		TrainNumber_and_Time st = null, et = null;
-		Find find = new Find();
-		
-		int i = 0 ,f = 0, j = 0;
-		
-		while(start.info_by_line[i] != null){
-			if(start.info_by_line[i].lineNumber == linenum){
-				f = 1;
-				break;
-			}
-			i++;
-		}
-		if(f == 0) return -1;
-		
-		f = 0;
-		while(end.info_by_line[j] != null){
-			if(end.info_by_line[j].lineNumber == linenum){
-				f = 1;
-				break;
-			}
-			j++;
-		}
-		
-		
-		
-		if(linenum == 2){
-		
-			st = FindStartTrain(start, h, m, start.info_by_line[i].lineNumber, 1);
-			if(st == null) return -1;
-		
-			et = FindEndTime(st, end, start.info_by_line[i].lineNumber, 1);
-			if(et == null) return -1;
-		
-			int tmp = find.FindSpentTime(start, end,start.info_by_line[i].lineNumber ,end.info_by_line[j].lineNumber, st);
-		
-			st = FindStartTrain(start, h, m, start.info_by_line[i].lineNumber, 0);
-			if(st == null) return -1;
-		
-			et = FindEndTime(st, end, start.info_by_line[i].lineNumber, 0);
-			if(et == null) return -1;
-		
-			int tmp2  = find.FindSpentTime(start, end,start.info_by_line[i].lineNumber ,end.info_by_line[j].lineNumber, st);
-		
-			if(tmp>tmp2) return tmp;
-			else return tmp2;
-		}
-		
-		if(start.index <end.index){//up
-		
-			st = FindStartTrain(start, h, m, start.info_by_line[i].lineNumber, 1);
-			if(st == null) return -1;
-		
-			et = FindEndTime(st, end, start.info_by_line[i].lineNumber, 1);
-			if(et == null) return -1;
-		
-			return find.FindSpentTime(start, end,start.info_by_line[i].lineNumber ,end.info_by_line[j].lineNumber, st);
-	
-		}
-		else{//down
-			
-			st = FindStartTrain(start, h, m, start.info_by_line[i].lineNumber, 0);
-			if(st == null) return -1;
-		
-			et = FindEndTime(st, end, start.info_by_line[i].lineNumber, 0);
-			if(et == null) return -1;
-		
-			return find.FindSpentTime(start, end,start.info_by_line[i].lineNumber ,end.info_by_line[j].lineNumber, st);
-		}
-		
-	}
-	
-	public Way No_transfer_AllLine(Station start, Station end, int h, int m){
-		
-		int maxtime = 0, tmptime = 0;
-		int j  = 0, i = 0;
-		TrainNumber_and_Time st = null, et = null;
-	
-		
-		while(start.info_by_line[i] != null){
-			while(end.info_by_line[j] != null){
-				if(start.info_by_line[i].lineNumber == end.info_by_line[j].lineNumber){
-					
-					tmptime = No_transfer_oneLine(start, end, start.info_by_line[i].lineNumber,  h, m);
-					
-					if(tmptime > maxtime) maxtime = tmptime;	
+		for(int i = 0; i<start.numberoflines; i++){
+			for(int j = 0; j<end.numberoflines; j++){
+				if(start.trans[i] == end.trans[j]){
+					linenum = start.trans[i];
 					break;
+					
 				}
-				
-				j++;
+					
 			}
-			i++;
 		}
-	
-		Way way = new Way(start, end, st, et, maxtime/60, maxtime%60);
 		
-		if(maxtime == 0) return null;
-		return way;
-	}
-	
-	
-	public Way transfer(Station start, Station end, int h, int m){
-		
-		Way way =  null;
-		
-		if((way = No_transfer_AllLine(start,  end, h, m)) != null) return way;
+		if(linenum != 0){
+			//no-transfer
+			for(int i = 0; i<start.numberoflines; i++){
+				if(linenum == start.line[i].lineNumber){
+					return start.line[i];
+					
+				}
+			}//find start info
+		}
 		else{
-			/*modify  one transfer*/
-			return way;
+			//transfer
 		}
+		return null;
+		
 	}
-}
+	
+	public TrainNumber_and_Time FindinfoTrain(Station_information info,  int h, int m, int flag){
+	
+		
+		int num = 0;
+		TrainNumber_and_Time[] TTA = null;
+		
+		if(flag == 0){ 
+			num = info.trains_down;
+			TTA = info.TTA_down;
+		}
+		else if(flag == 1){
+			num = info.trains_up;
+			TTA = info.TTA_up;
+		}
+		else if(flag == 2){ 
+			num = info.trains_down_red;
+			TTA = info.TTA_down_red;
+		}
+		else if(flag == 3){
+			num = info.trains_up_red;
+			TTA = info.TTA_up_red;
+		}
+		else if(flag == 4){ 
+			num = info.trains_down_w;
+			TTA = info.TTA_down_w;
+		}
+		else if(flag == 5){
+			num = info.trains_up_w;
+			TTA = info.TTA_up_w;
+		}
+		else return null;
+		
+		
+		for(int j = 0; j<num; j++){
+					
+			if(h == TTA[j].deph){
+				if(m <= TTA[j].depm){
+					return TTA[j];	
+				}
+			}
+			else if(h <TTA[j].deph){
+				return TTA[j];
+			}
+		}
+		return null;	
+			
+	}	
+	
+	public Output findpath(Station start, Station end, int h, int m){
+		
+		Station_information  startinfo, endinfo;
+		Output output =  new Output();
+		startinfo = FindStartinfo(start, end);
+		endinfo = FindStartinfo(end, start);
+		int flag, tmp;
+		
+		output.start = startinfo;
+		output.end = endinfo;
+		
+		/*if(monday~friday){
+		 * 	if(up )	flag = 1; 
+		 *  else if(down|| startinfo.linenum ==2)	flag  = 0;
+		 * 	
+		 * }
+		 * else if(red){
+		 * 	if(up)	flag = 3; 
+		 *  else if(down ||startinfo.linenum ==2)	flag  = 2;
+		 * 
+		 * }
+		 * else if(w){
+		 *  if(up)	flag = 5; 
+		 *  else if(down||startinfo.linenum ==2)	flag  = 4;
+		 * 	
+		 *
+		 * }
+		 * 
+		 
+		 */
+		if(startinfo.lineNumber == endinfo.lineNumber){//no-transfer
+			
+			if(start.index < end.index )  tmp = No_transfer(startinfo, endinfo,  h,  m, 1, output);
+			else if(start.index > end.index) tmp = No_transfer(startinfo, endinfo,  h,  m, 0, output);
+			else if(startinfo.lineNumber == 2){
+				tmp = No_transfer(startinfo, endinfo,  h,  m, 1, output);
+				int tmp2 = No_transfer(startinfo, endinfo,  h,  m, 0, output);
+				// tmp = No_transfer(startinfo, endinfo,  h,  m, flag, output);
+				//int tmp2 = No_transfer(startinfo, endinfo,  h,  m, flag+1, output);
+				if(tmp > tmp2) tmp = tmp2;
+			}
+			else return null;
+			if(tmp == 1) return null;
+			
+			output.spentTime = new String(tmp/60+":"+tmp%60);
+			return output;
+		}
+		else{
+			//transfer
+		}
+		
+		return null;
+	}
+	
+	public TrainNumber_and_Time FindendTime(TrainNumber_and_Time start,Station_information end, int flag){
+	
+		int num = 0;
+		TrainNumber_and_Time[] TTA = null;
+		
+		if(flag == 0){ 
+			num = end.trains_down;
+			TTA = end.TTA_down;
+		}
+		else if(flag == 1){
+			num = end.trains_up;
+			TTA = end.TTA_up;
+		}
+		else if(flag == 2){ 
+			num = end.trains_down_red;
+			TTA = end.TTA_down_red;
+		}
+		else if(flag == 3){
+			num = end.trains_up_red;
+			TTA = end.TTA_up_red;
+		}
+		else if(flag == 4){ 
+			num = end.trains_down_w;
+			TTA = end.TTA_down_w;
+		}
+		else if(flag == 5){
+			num = end.trains_up_w;
+			TTA = end.TTA_up_w;
+		}
+		else return null;
+			
+		for(int i = 0; i<num; i++){
+			if(start.deph <= TTA[i].deph){
+				if(start.TrainNumber.equals(TTA[i].TrainNumber))
+					return TTA[i];
+			}
+		}
+		
+		return null;
+		
+	}
+	
+
+	public int No_transfer(Station_information startinfo, Station_information endinfo,  int h, int m, int flag, Output output){
+	
+		TrainNumber_and_Time start = FindinfoTrain(startinfo,  h, m, flag);		
+		TrainNumber_and_Time end;
+		Find find = new Find();
+		int tmp;
+		
+		
+		end = FindendTime(start, endinfo, flag);
+		if(end == null) return -1;
+		
+		tmp = find.FindSpentTime(start, end);
+		output.startTime = new String(start.desh + ":"+ start.desm);
+		output.endTime = new String(end.deph+":"+ end.depm);
+		
+		
+		return tmp;
+	}
+		
+}	

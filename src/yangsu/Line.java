@@ -1,5 +1,3 @@
-package yangsu;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -11,6 +9,7 @@ public class Line {
 	public Station[] station;
 	public int num;
 	
+	
 	public Line(){
 		
 	}
@@ -19,8 +18,8 @@ public class Line {
 		
 		File fp;
 		BufferedReader line_number;
-		String n, name, station_num;
-		int i = 0;
+		String n, name, station_num, transfer;
+		int i = 0, p, sn;
 		
 		fp =  new File(lineNum+".txt");
 		line_number = new BufferedReader(new FileReader(fp));
@@ -31,8 +30,15 @@ public class Line {
 		for(i = 0; i<num; i++){
 			name = line_number.readLine();
 			station_num = line_number.readLine();
-			station[i] = new Station(name,i, lineNum, num);//store StationName
+			sn = Integer.parseInt(station_num);
+			n = line_number.readLine();
+			p = Integer.parseInt(n);
+			transfer = line_number.readLine();
+
+			station[i] = new Station(name,i, lineNum, p,sn, transfer);//store StationName
 		}
+		
+		
 		line_number.close();
 		
 	}

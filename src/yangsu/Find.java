@@ -1,4 +1,3 @@
-package yangsu;
 
 public class Find {
 
@@ -24,14 +23,14 @@ public class Find {
 		return  FindStation_All_line(name, line);
 	}
 	*/
-	public int FindSpentTime(Station start, Station end, int startline, int endline, TrainNumber_and_Time train){
-		//�ҿ�ð�
+	public int FindSpentTime(TrainNumber_and_Time start, TrainNumber_and_Time end){
+
 		int th, th2, tm, tm2;
 
-			th = train.deph;
-			th2 = train.desh;
-			tm = train.depm;
-			tm2 = train.desm;
+			th = start.deph;
+			th2 = end.desh;
+			tm = start.depm;
+			tm2 = end.desm;
 
 		
 		if(th > th2 ){
