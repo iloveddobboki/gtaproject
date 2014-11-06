@@ -2,6 +2,8 @@ package kr.ac.sogang.gtasubway;
 
 import java.util.ArrayList;
 
+import yangsu.Main;
+
 import kr.ac.sogang.gtasubway.search.Search;
 
 import android.app.ActionBar;
@@ -30,6 +32,8 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
             //lists.add(new Tab("View 3", new View1()));
         }
 
+        
+        
         @Override public Fragment getItem(int position) { return lists.get(position).View; }
         @Override public int getCount() { return lists.size(); }
         @Override public CharSequence getPageTitle(int position) { return lists.get(position).Name; }
@@ -65,6 +69,9 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         });
         for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) 
             actionBar.addTab(actionBar.newTab().setText(mSectionsPagerAdapter.getPageTitle(i)).setTabListener(this));
+    
+        this.setTitle(Main.printing());
+    
     }
 
     @Override
