@@ -1,3 +1,4 @@
+package yangsu;
 
 public class Transfer {
 
@@ -66,7 +67,7 @@ public class Transfer {
 		else return null;
 		
 		
-		for(int j = 0; j<num; j++){
+		for(int j = 0; j<num; j++){ //어느 열차를 탈까?
 					
 			if(h == TTA[j].deph){
 				if(m <= TTA[j].depm){
@@ -115,7 +116,7 @@ public class Transfer {
 			
 			if(start.index < end.index )  tmp = No_transfer(startinfo, endinfo,  h,  m, 1, output);
 			else if(start.index > end.index) tmp = No_transfer(startinfo, endinfo,  h,  m, 0, output);
-			else if(startinfo.lineNumber == 2){
+			else if(startinfo.lineNumber == 2){ // 순환선~
 				tmp = No_transfer(startinfo, endinfo,  h,  m, 1, output);
 				int tmp2 = No_transfer(startinfo, endinfo,  h,  m, 0, output);
 				// tmp = No_transfer(startinfo, endinfo,  h,  m, flag, output);
@@ -123,7 +124,7 @@ public class Transfer {
 				if(tmp > tmp2) tmp = tmp2;
 			}
 			else return null;
-			if(tmp == 1) return null;
+			if(tmp == 1) return null; //유진 1 아니고 -1 아니여?
 			
 			output.spentTime = new String(tmp/60+":"+tmp%60);
 			return output;

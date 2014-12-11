@@ -36,13 +36,18 @@ public class Search extends Fragment implements OnQueryTextListener{
             Bundle savedInstanceState) {
  
     	mSearchListData= new ArrayList<Station>();
-    		mSearchListData.add(new Station(null,null,"청량리","1","_",mSearchListData.size(),"010-9021-6377"));
+    		mSearchListData.add(new Station(null,null,"당산","2","_",mSearchListData.size(),"010-9021-6377"));
+    		mSearchListData.add(new Station(null,null,"합정","2","_",mSearchListData.size(),"010-9021-6377"));
+    		mSearchListData.add(new Station(null,null,"홍대입구","2","_",mSearchListData.size(),"010-9021-6377"));
 	 		mSearchListData.add(new Station(null,"test_shinchon.JPG","신촌","2","_",mSearchListData.size(),"010-9021-6377"));
-	 		mSearchListData.add(new Station(null,null,"이대","2","_",mSearchListData.size(),"010-9021-6377","010-3238-8681"));
+	 		mSearchListData.add(new Station(null,"test_ihwa.JPG","이대","2","_",mSearchListData.size(),"010-9021-6377","010-3238-8681"));
 	 		mSearchListData.add(new Station(null,"test_ahyen.JPG","아현","2","_",mSearchListData.size(),"010-9021-6377","010-3238-8681","010-5146-1008"));
 	 		mSearchListData.add(new Station(null,"test_choongjeongro.JPG","충정로","2","_",mSearchListData.size(),"010-9021-6377"));
-	 		mSearchListData.add(new Station(null,null,"국회의사당","9","_",mSearchListData.size(),"010-9021-6377"));
-	 	
+	 		mSearchListData.add(new Station(null,null,"시청","1","_",mSearchListData.size(),"010-9021-6377"));
+	 		mSearchListData.add(new Station(null,null,"을지로3가","2","_",mSearchListData.size(),"010-9021-6377"));
+	 		mSearchListData.add(new Station(null,null,"을지로4가","2","_",mSearchListData.size(),"010-9021-6377"));
+	 		mSearchListData.add(new Station(null,null,"동대문역사문화공원","2","_",mSearchListData.size(),"010-9021-6377"));
+	 		
 	 	
 	 	mSearchedStations= new ArrayList<StationInfo>();
 	 	

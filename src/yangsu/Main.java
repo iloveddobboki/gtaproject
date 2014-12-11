@@ -1,3 +1,5 @@
+package yangsu;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -20,7 +22,7 @@ public class Main {
 								if(line[3].station[j].StationName.equals(line[1].station[i].StationName)){
 									line[1].station[i].add_station(line[3].station[j].info_by_line);
 									line[3].station[j].add_station(line[1].station[i].info_by_line);
-								}
+								}// 유진 아~ 예를 들어 2,4호선 환승역 A가 있어 2호선에서 A의 역코드는 201 4호선에선 401 이라고 하면, station.station_num  이 201 이고, station.line ? 에 4호선 역정보가 추가되어있는 station 이 하나 있고, station.station_num 이 401 이고 station.line 에 2호선 역정보가 추가 돼있는, 일케 2개의 station 이 생기는 
 						
 						}
 					}

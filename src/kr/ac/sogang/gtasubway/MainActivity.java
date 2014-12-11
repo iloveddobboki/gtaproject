@@ -70,7 +70,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) 
             actionBar.addTab(actionBar.newTab().setText(mSectionsPagerAdapter.getPageTitle(i)).setTabListener(this));
     
-        this.setTitle(Main.printing());
+        this.setTitle("GtaSubway");
     
     }
 

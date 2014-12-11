@@ -1,3 +1,4 @@
+package yangsu;
 
 public class Find {
 

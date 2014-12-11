@@ -1,10 +1,9 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+package yangsu;
+
 import java.io.IOException;
-import java.util.Scanner;
 import java.util.StringTokenizer;
 
+//이거 읽음 따단
 public class Station{
 
 	protected String StationName;
@@ -32,8 +31,8 @@ public class Station{
 		for(int f = 0; f<numberoflines; f++ ){
 			 trans[f] = Integer.parseInt(tmp.nextToken(" "));
 		}
-		
-		info_by_line = new Station_information(station_num,linenum);//store StationName
+		//
+		info_by_line = new Station_information(station_num,linenum);//store StationName //유진 store station_num 하는거 아니얌??? 
 		line[0] =  this.info_by_line;	
 		i++;
 		

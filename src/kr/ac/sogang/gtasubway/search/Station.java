@@ -12,7 +12,9 @@ public class Station implements Serializable{
 	public String map;
 	public String mStation;
 	public String mLine1;
+	
 	public String mLine2;
+	
 	public int stationId;
 	// serach 에 있는 mSearchListData에 해당 역이 담겨있는 index 값
 	public ArrayList<String> phoneNum = new ArrayList<String>();
