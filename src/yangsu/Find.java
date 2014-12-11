@@ -52,5 +52,10 @@ public class Find {
 		
 		return th*60+tm;
 	}
+	
+	
+	public void nothing(){
+	
+	}
 
 }
